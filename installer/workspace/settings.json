@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(~/.studio/bin/*)",
+      "Bash($HOME/.studio/bin/*)",
+      "Bash(ffmpeg *)",
+      "Bash(ffprobe *)",
+      "Bash(hyperframes *)",
+      "Bash(npx hyperframes *)",
+      "Bash(open *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(cd *)",
+      "Bash(du *)",
+      "Bash(file *)",
+      "Bash(magick *)",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "ask": [
+      "Bash(rm *)"
+    ]
+  }
+}

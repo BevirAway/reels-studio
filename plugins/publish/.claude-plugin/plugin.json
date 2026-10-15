@@ -1,0 +1,12 @@
+{
+  "name": "publish",
+  "displayName": "Публікація",
+  "version": "0.1.0",
+  "description": "Пости в Instagram і Telegram-канал за розкладом; для інших мереж — готовий пакет.",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}

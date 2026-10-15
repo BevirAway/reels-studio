@@ -1,0 +1,12 @@
+{
+  "name": "texts",
+  "displayName": "Тексти й каруселі",
+  "version": "0.1.0",
+  "description": "Підписи до постів вашим голосом, каруселі у вашому стилі, контент-план.",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}

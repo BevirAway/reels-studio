@@ -1,0 +1,512 @@
+[
+ {
+  "id": "starter:whoosh_soft",
+  "title": "whoosh soft",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "whoosh_soft.flac",
+  "category": "whoosh",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.97,
+  "peak_s": 0.128,
+  "src": "whoosh/freesound_623709_soft-swoosh-with-noisy-ambience-wav.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -20.4
+ },
+ {
+  "id": "starter:whoosh_air",
+  "title": "whoosh air",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "whoosh_air.flac",
+  "category": "whoosh",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.953,
+  "peak_s": 0.413,
+  "src": "whoosh/freesound_71852_digital-whoosh-soft-wav.mp3",
+  "peak_db": -0.2,
+  "query": "",
+  "lufs": -11.9
+ },
+ {
+  "id": "starter:whoosh_low",
+  "title": "whoosh low",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "whoosh_low.flac",
+  "category": "whoosh",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.4,
+  "peak_s": 0.105,
+  "src": "whoosh/freesound_816261_broomstick-whoosh-2-soft-low-okm1.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -26.4
+ },
+ {
+  "id": "starter:whoosh_chop",
+  "title": "whoosh chop",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "whoosh_chop.flac",
+  "category": "whoosh",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.5,
+  "peak_s": 0.134,
+  "src": "whoosh/freesound_127197_fast-simple-chop-5-aif.mp3",
+  "peak_db": -3.4,
+  "query": "",
+  "lufs": -20.1
+ },
+ {
+  "id": "starter:whoosh_stick",
+  "title": "whoosh stick",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "whoosh_stick.flac",
+  "category": "whoosh",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.527,
+  "peak_s": 0.031,
+  "src": "whoosh/freesound_485279_wooden-stick-swing-1-4.mp3",
+  "peak_db": -1.9,
+  "query": "",
+  "lufs": -23.4
+ },
+ {
+  "id": "starter:paper_slide",
+  "title": "paper slide",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "paper_slide.flac",
+  "category": "paper",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.643,
+  "peak_s": 1.141,
+  "src": "paper/freesound_464302_paperslide-wav.mp3",
+  "peak_db": -2.5,
+  "query": "",
+  "lufs": -13.6
+ },
+ {
+  "id": "starter:paper_slide2",
+  "title": "paper slide2",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "paper_slide2.flac",
+  "category": "paper",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.181,
+  "peak_s": 0.456,
+  "src": "paper/freesound_352914_paper-slide.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -30.7
+ },
+ {
+  "id": "starter:paper_lay",
+  "title": "paper lay",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "paper_lay.flac",
+  "category": "paper",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.332,
+  "peak_s": 0.101,
+  "src": "paper/freesound_470189_55-coger-foto-wav-sliding-paper.mp3",
+  "peak_db": -3.6,
+  "query": "",
+  "lufs": -70.0
+ },
+ {
+  "id": "starter:page_turn",
+  "title": "page turn",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "page_turn.flac",
+  "category": "page",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.468,
+  "peak_s": 0.19,
+  "src": "paper/freesound_397548_page-turn-01.mp3",
+  "peak_db": -1.1,
+  "query": "",
+  "lufs": -20.3
+ },
+ {
+  "id": "starter:page_turn2",
+  "title": "page turn2",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "page_turn2.flac",
+  "category": "page",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.709,
+  "peak_s": 0.089,
+  "src": "paper/freesound_457767_turnpage-mp3.mp3",
+  "peak_db": -3.5,
+  "query": "",
+  "lufs": -25.0
+ },
+ {
+  "id": "starter:pencil_write",
+  "title": "pencil write",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "pencil_write.flac",
+  "category": "pencil",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.074,
+  "peak_s": 0.023,
+  "src": "pencil/freesound_277312_pencil-writing-on-paper.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -19.8
+ },
+ {
+  "id": "starter:pencil_scribble",
+  "title": "pencil scribble",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "pencil_scribble.flac",
+  "category": "pencil",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.266,
+  "peak_s": 1.053,
+  "src": "pencil/freesound_257518_scribble-short-wav.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -17.2
+ },
+ {
+  "id": "starter:pencil_check",
+  "title": "pencil check",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "pencil_check.flac",
+  "category": "pencil",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.528,
+  "peak_s": 0.268,
+  "src": "pencil/freesound_181056_pencil-check-mark-2-wav.mp3",
+  "peak_db": -2.4,
+  "query": "",
+  "lufs": -15.8
+ },
+ {
+  "id": "starter:marker_circle",
+  "title": "marker circle",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "marker_circle.flac",
+  "category": "marker",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.746,
+  "peak_s": 0.289,
+  "src": "pencil/freesound_321137_sharpie-marker-drawing-circle-01-wav.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -13.8
+ },
+ {
+  "id": "starter:snap",
+  "title": "snap",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "snap.flac",
+  "category": "snap",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.169,
+  "peak_s": 0.021,
+  "src": "pop/freesound_388958_soft-two-finger-snap.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -70.0
+ },
+ {
+  "id": "starter:click_soft",
+  "title": "click soft",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "click_soft.flac",
+  "category": "click",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.238,
+  "peak_s": 0.005,
+  "src": "click/freesound_528561_soft-ui-button-click.mp3",
+  "peak_db": -3.7,
+  "query": "",
+  "lufs": -70.0
+ },
+ {
+  "id": "starter:apple_bite",
+  "title": "apple bite",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "apple_bite.flac",
+  "category": "apple",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.868,
+  "peak_s": 0.398,
+  "src": "eat/freesound_275015_bite-apple.mp3",
+  "peak_db": -3.9,
+  "query": "",
+  "lufs": -22.5
+ },
+ {
+  "id": "starter:apple_bite2",
+  "title": "apple bite2",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "apple_bite2.flac",
+  "category": "apple",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.296,
+  "peak_s": 0.717,
+  "src": "eat/freesound_250106_apple-bite.mp3",
+  "peak_db": -3.8,
+  "query": "",
+  "lufs": -29.6
+ },
+ {
+  "id": "starter:crunch",
+  "title": "crunch",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "crunch.flac",
+  "category": "crunch",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.399,
+  "peak_s": 0.106,
+  "src": "eat/freesound_816237_crunch.mp3",
+  "peak_db": -3.8,
+  "query": "",
+  "lufs": -70.0
+ },
+ {
+  "id": "starter:thud_box",
+  "title": "thud box",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "thud_box.flac",
+  "category": "thud",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.178,
+  "peak_s": 0.108,
+  "src": "thud/freesound_536789_thumps-ogg.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -17.7
+ },
+ {
+  "id": "starter:knock_wood",
+  "title": "knock wood",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "knock_wood.flac",
+  "category": "wood",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.109,
+  "peak_s": 0.382,
+  "src": "thud/freesound_812363_knocking-once-on-wood-single-footstep.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -27.3
+ },
+ {
+  "id": "starter:apple_drop",
+  "title": "apple drop",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "apple_drop.flac",
+  "category": "apple",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.891,
+  "peak_s": 0.025,
+  "src": "thud/freesound_392508_tiramanzanamordida-wav.mp3",
+  "peak_db": -3.5,
+  "query": "",
+  "lufs": -22.4
+ },
+ {
+  "id": "starter:wood_lay",
+  "title": "wood lay",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "wood_lay.flac",
+  "category": "wood",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.779,
+  "peak_s": 0.345,
+  "src": "paper/freesound_552615_small-hard-lay-down-wood-table-01-wav.mp3",
+  "peak_db": -1.1,
+  "query": "",
+  "lufs": -17.3
+ },
+ {
+  "id": "starter:rustle",
+  "title": "rustle",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "rustle.flac",
+  "category": "rustle",
+  "tags": [
+   "starter"
+  ],
+  "duration": 2.915,
+  "peak_s": 0.182,
+  "src": "foley/freesound_106114_bushmovement-wav.mp3",
+  "peak_db": -3.5,
+  "query": "",
+  "lufs": -22.5
+ },
+ {
+  "id": "starter:rustle2",
+  "title": "rustle2",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "rustle2.flac",
+  "category": "rustle",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.115,
+  "peak_s": 0.203,
+  "src": "foley/freesound_178615_the-rustle-of-a-bush.mp3",
+  "peak_db": -3.6,
+  "query": "",
+  "lufs": -20.1
+ },
+ {
+  "id": "starter:birds",
+  "title": "birds",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "birds.flac",
+  "category": "birds",
+  "tags": [
+   "starter"
+  ],
+  "duration": 26.061,
+  "peak_s": 15.517,
+  "src": "ambience/freesound_387978_birds-singing-03-wav.mp3",
+  "peak_db": -1.4,
+  "query": "",
+  "lufs": -18.7
+ },
+ {
+  "id": "starter:birds_wind",
+  "title": "birds wind",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "birds_wind.flac",
+  "category": "birds",
+  "tags": [
+   "starter"
+  ],
+  "duration": 32.132,
+  "peak_s": 32.095,
+  "src": "ambience/freesound_538197_wind-in-the-trees-with-birds-m4a.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -29.8
+ },
+ {
+  "id": "starter:xylo",
+  "title": "xylo",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "xylo.flac",
+  "category": "xylo",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.632,
+  "peak_s": 0.036,
+  "src": "bell/freesound_204648_xylophone-g4-wav.mp3",
+  "peak_db": -4.0,
+  "query": "",
+  "lufs": -15.3
+ },
+ {
+  "id": "starter:riser_soft",
+  "title": "riser soft",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "riser_soft.flac",
+  "category": "riser",
+  "tags": [
+   "starter"
+  ],
+  "duration": 1.352,
+  "peak_s": 0.236,
+  "src": "riser/freesound_648729_cinematic-woosh-sfx-010-wav.mp3",
+  "peak_db": -3.3,
+  "query": "",
+  "lufs": -19.1
+ },
+ {
+  "id": "starter:camera",
+  "title": "camera",
+  "author": "Freesound (CC0)",
+  "license": "CC0",
+  "file": "camera.flac",
+  "category": "camera",
+  "tags": [
+   "starter"
+  ],
+  "duration": 0.464,
+  "peak_s": 0.262,
+  "src": "click/freesound_431588_iphone-camera-capture-wav.mp3",
+  "peak_db": -1.4,
+  "query": "",
+  "lufs": -16.8
+ }
+]

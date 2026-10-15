@@ -1,0 +1,12 @@
+{
+  "name": "research",
+  "displayName": "Дослідження Instagram",
+  "version": "0.1.0",
+  "description": "Завантажити ваші пости й чужі рілси, подивитись, що зайшло (Apify).",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}

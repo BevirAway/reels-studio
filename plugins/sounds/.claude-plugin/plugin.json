@@ -1,0 +1,12 @@
+{
+  "name": "sounds",
+  "displayName": "Звуки",
+  "version": "0.1.0",
+  "description": "Справжні звукові ефекти з Freesound; якщо немає потрібного — генерація в ElevenLabs.",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}

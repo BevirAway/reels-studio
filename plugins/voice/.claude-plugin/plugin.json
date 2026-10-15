@@ -1,0 +1,12 @@
+{
+  "name": "voice",
+  "displayName": "Чистка голосу",
+  "version": "0.1.0",
+  "description": "Студійний голос на Mac (Resemble Enhance): прибирає шум, живі звуки кадру лишаються.",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "reels-studio",
+  "description": "Студія рілсів: монтаж, тексти й публікація з Claude",
+  "owner": {
+    "name": "Nikita"
+  },
+  "plugins": [
+    {
+      "name": "studio",
+      "source": "./plugins/studio",
+      "description": "Налаштування студії, ключі, перша зустріч і довідка. Завжди увімкнено.",
+      "displayName": "Студія — основа"
+    },
+    {
+      "name": "montage",
+      "source": "./plugins/montage",
+      "description": "Рілси з відео «говорюча голова»: нарізка без пауз, субтитри по словах, анімації у вашому стилі, звук і музика.",
+      "displayName": "Монтаж рілсів"
+    },
+    {
+      "name": "voice",
+      "source": "./plugins/voice",
+      "description": "Студійний голос на Mac (Resemble Enhance): прибирає шум, живі звуки кадру лишаються.",
+      "displayName": "Чистка голосу"
+    },
+    {
+      "name": "upscale",
+      "source": "./plugins/upscale",
+      "description": "Збільшення дрібних і старих відео (Real-ESRGAN) перед монтажем.",
+      "displayName": "Покращення якості відео"
+    },
+    {
+      "name": "sounds",
+      "source": "./plugins/sounds",
+      "description": "Справжні звукові ефекти з Freesound; якщо немає потрібного — генерація в ElevenLabs.",
+      "displayName": "Звуки"
+    },
+    {
+      "name": "texts",
+      "source": "./plugins/texts",
+      "description": "Підписи до постів вашим голосом, каруселі у вашому стилі, контент-план.",
+      "displayName": "Тексти й каруселі"
+    },
+    {
+      "name": "research",
+      "source": "./plugins/research",
+      "description": "Завантажити ваші пости й чужі рілси, подивитись, що зайшло (Apify).",
+      "displayName": "Дослідження Instagram"
+    },
+    {
+      "name": "publish",
+      "source": "./plugins/publish",
+      "description": "Пости в Instagram і Telegram-канал за розкладом; для інших мереж — готовий пакет.",
+      "displayName": "Публікація"
+    }
+  ]
+}

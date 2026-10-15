@@ -1,0 +1,12 @@
+{
+  "name": "upscale",
+  "displayName": "Покращення якості відео",
+  "version": "0.1.0",
+  "description": "Збільшення дрібних і старих відео (Real-ESRGAN) перед монтажем.",
+  "author": {
+    "name": "Nikita"
+  },
+  "dependencies": [
+    "studio"
+  ]
+}
