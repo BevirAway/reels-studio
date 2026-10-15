@@ -5,7 +5,7 @@
 #   setup.sh --deps <модуль>       лише докачати потрібне модулю (викликає `studio module on`)
 #   setup.sh --auto [--modules montage,voice] [--workspace DIR] [--pack ФАЙЛ.zip|ПАПКА] [--no-claude]
 #   Пакет стилю (studio-pack*.zip від Нікіти: стиль/, профіль.md, зразок рілса/) береться й сам із ~/Downloads.
-#   Пак звуків (studio-sounds*.zip: звуки/, музика/) — так само, або --sounds ФАЙЛ.zip|ПАПКА.
+#   Пак звуків і музики (модулі «Монтаж»/«Звуки») — з релізу sounds-v1 на GitHub, або --sounds / ~/Downloads/studio-sounds*.zip.
 #                                  без вікон (перевірка, встановлення по телефону)
 set -u
 S="$HOME/.studio"; REPO="$S/repo"; BIN="$S/bin"; LOG="$S/install.log"
@@ -291,6 +291,23 @@ import_sounds() {  # пак звуків і музики: звуки → біб�
   touch "$done"
 }
 
+SOUNDS_URL="https://github.com/BevirAway/reels-studio/releases/download/sounds-v1/studio-sounds-oldsport.zip"
+get_sounds() {  # пак звуків: --sounds, ~/Downloads/studio-sounds*.zip або завантажити з GitHub (раз)
+  local W="$1" Z="$SOUNDS"
+  [ -z "$Z" ] && Z=$(ls -t "$HOME/Downloads"/studio-sounds*.zip 2>/dev/null | head -1)
+  if [ -z "$Z" ]; then
+    [ -f "$S/.sounds-studio-sounds-oldsport.done" ] && return 0
+    say "Завантажую звуки й музику (~530 МБ)…"
+    mkdir -p "$S/cache"; Z="$S/cache/studio-sounds-oldsport.zip"
+    run curl -fL --retry 3 -o "$Z" "$SOUNDS_URL" || { rm -f "$Z"; return 1; }
+  fi
+  [ -f "$S/.sounds-$(basename "$Z" .zip).done" ] && return 0
+  say "Додаю звуки й музику (кілька хвилин)…"
+  import_sounds "$Z" "$W" || return 1
+  [[ "$Z" == "$S/cache/"* ]] && rm -f "$Z"
+  say "✓ звуки й музика"
+}
+
 setup_plugins() {
   [ $NO_CLAUDE = 1 ] && return 0
   local C; C=$(claude_cmd) || return 1
@@ -352,6 +369,7 @@ ask_keys() {
 # ================================================================== сценарії
 if [ -n "$DEPS_ONLY" ]; then
   install_uv && venv_base >/dev/null && deps_for "$DEPS_ONLY" && say "✓ готово" || fail "не вдалося встановити $DEPS_ONLY"
+  case "$DEPS_ONLY" in sounds|montage) W=$(cfg_get workspace); [ -n "$W" ] && { get_sounds "$W" || fail "звуки й музика"; } ;; esac
   exit $?
 fi
 
@@ -416,10 +434,8 @@ done
 step "Робоча папка"
 make_workspace "$WS"; say "✓ $WS"
 write_config
-if [ -z "$SOUNDS" ]; then SOUNDS=$(ls -t "$HOME/Downloads"/studio-sounds*.zip 2>/dev/null | head -1); fi
-if [ -n "$SOUNDS" ] && [ -e "$SOUNDS" ] && [ ! -f "$S/.sounds-$(basename "$SOUNDS" .zip).done" ]; then
-  say "Додаю звуки й музику: $(basename "$SOUNDS") (кілька хвилин)…"
-  import_sounds "$SOUNDS" "$WS" && say "✓ звуки й музика" || fail "звуки з $(basename "$SOUNDS")"
+if [ -n "$SOUNDS" ] || [[ ",$CHOSEN," == *",sounds,"* || ",$CHOSEN," == *",montage,"* ]]; then
+  get_sounds "$WS" || fail "звуки й музика"
 fi
 
 step "Модулі в Claude"
