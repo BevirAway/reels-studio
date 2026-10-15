@@ -29,3 +29,5 @@
 - Ключі — `~/.studio/keys.env` (600), стан — `~/.studio/config.json`, журнал встановлення — `~/.studio/install.log`.
 - Перевірка без вікон: `STUDIO_SRC=<папка репо> bash install.sh --auto --modules montage,voice --pack ~/Downloads/studio-pack-iryna.zip`.
 - Пакет стилю (особисте, не в репозиторії): zip з `стиль/`, `профіль.md`, `зразок рілса/` — `--pack <zip>` або просто лежить у `~/Downloads/studio-pack*.zip`.
+- Пак звуків і музики (куплений, не в репозиторії): zip з `звуки/` і `музика/<настрій>/` — `--sounds <zip>` або
+  `~/Downloads/studio-sounds*.zip`; звуки йдуть у бібліотеку (`sfx.py add-dir`), музика — у `Бібліотека/Музика`.

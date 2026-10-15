@@ -5,6 +5,7 @@
 #   setup.sh --deps <модуль>       лише докачати потрібне модулю (викликає `studio module on`)
 #   setup.sh --auto [--modules montage,voice] [--workspace DIR] [--pack ФАЙЛ.zip|ПАПКА] [--no-claude]
 #   Пакет стилю (studio-pack*.zip від Нікіти: стиль/, профіль.md, зразок рілса/) береться й сам із ~/Downloads.
+#   Пак звуків (studio-sounds*.zip: звуки/, музика/) — так само, або --sounds ФАЙЛ.zip|ПАПКА.
 #                                  без вікон (перевірка, встановлення по телефону)
 set -u
 S="$HOME/.studio"; REPO="$S/repo"; BIN="$S/bin"; LOG="$S/install.log"
@@ -14,7 +15,7 @@ mkdir -p "$S" "$BIN" "$S/venvs" "$S/models"
 export PATH="$BIN:$S/node/bin:$HOME/.local/bin:$PATH"
 export UV_PYTHON_INSTALL_DIR="$S/python" UV_CACHE_DIR="$S/cache/uv"
 
-MODE=first; AUTO=0; DEPS_ONLY=""; MODS_ARG=""; WS_ARG=""; PACK=""; NO_CLAUDE=0
+MODE=first; AUTO=0; DEPS_ONLY=""; MODS_ARG=""; WS_ARG=""; PACK=""; SOUNDS=""; NO_CLAUDE=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --settings) MODE=settings ;;
@@ -23,6 +24,7 @@ while [ $# -gt 0 ]; do
     --modules) MODS_ARG="$2"; shift ;;
     --workspace) WS_ARG="$2"; shift ;;
     --pack) PACK="$2"; shift ;;
+    --sounds) SOUNDS="$2"; shift ;;
     --no-claude) NO_CLAUDE=1 ;;
   esac
   shift
@@ -276,6 +278,19 @@ make_workspace() {
   done
 }
 
+import_sounds() {  # пак звуків і музики: звуки → бібліотека (sfx.py add-dir), музика → Бібліотека/Музика/<жанр>/
+  local Z="$1" W="$2" t name done
+  name=$(basename "$Z"); name="${name%.zip}"; done="$S/.sounds-$name.done"
+  [ -f "$done" ] && return 0
+  if [ -d "$Z" ]; then t="$Z"; else t=$(mktemp -d); ditto -x -k "$Z" "$t" || return 1; fi
+  local root; root=$(dirname "$(find "$t" -maxdepth 3 -type d \( -name "звуки" -o -name "музика" \) | head -1)")
+  local src; src=$(printf "%s" "$name" | sed 's/^studio-sounds-*//'); src="${src:-pack}"
+  if [ -d "$root/звуки" ]; then run "$BIN/py" "$REPO/plugins/sounds/scripts/sfx.py" add-dir "$root/звуки" --src "$src" || return 1; fi
+  if [ -d "$root/музика" ]; then cp -Rn "$root/музика/." "$W/Бібліотека/Музика/" 2>/dev/null; fi
+  [ -d "$Z" ] || rm -rf "$t"
+  touch "$done"
+}
+
 setup_plugins() {
   [ $NO_CLAUDE = 1 ] && return 0
   local C; C=$(claude_cmd) || return 1
@@ -401,6 +416,11 @@ done
 step "Робоча папка"
 make_workspace "$WS"; say "✓ $WS"
 write_config
+if [ -z "$SOUNDS" ]; then SOUNDS=$(ls -t "$HOME/Downloads"/studio-sounds*.zip 2>/dev/null | head -1); fi
+if [ -n "$SOUNDS" ] && [ -e "$SOUNDS" ] && [ ! -f "$S/.sounds-$(basename "$SOUNDS" .zip).done" ]; then
+  say "Додаю звуки й музику: $(basename "$SOUNDS") (кілька хвилин)…"
+  import_sounds "$SOUNDS" "$WS" && say "✓ звуки й музика" || fail "звуки з $(basename "$SOUNDS")"
+fi
 
 step "Модулі в Claude"
 setup_plugins || fail "не вдалося підключити модулі до Claude"

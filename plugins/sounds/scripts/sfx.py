@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Звуки студії: пошук на Freesound (CC0, без ключа), завантаження в `Бібліотека/Звуки` робочої папки, генерація
 в ElevenLabs — лише запасний шлях, якщо на Freesound немає потрібного або не подобається (ключ ELEVENLABS_API_KEY).
-Спершу шукати у своїй бібліотеці (`lib`), потім на Freesound. Послухати їй — `open <файл>`.
+Спершу шукати у своїй бібліотеці (`lib` показує першими звуки куплених паків, напр. Old Sport), потім на Freesound.
+Послухати їй — `open <файл>`.
 
   sfx.py lib [запит] [--cat whoosh]              що вже є
   sfx.py search "apple crunch" [--min 0.1] [--max 3] [-n 8]
@@ -9,6 +10,7 @@
   sfx.py fetch "door creak" --cat door -n 3 [--min …] [--max …]   знайти й завантажити найкращі
   sfx.py gen "apple dropped into a wooden crate" --cat apple --dur 1.2 [-n 2]   запасний шлях: ElevenLabs
   sfx.py audit [--cat …]                           переміряти пік, гучність
+  sfx.py add-dir <папка пака> --src oldsport        додати готовий пак звуків (копія + заміри)
 
 Категорії — будь-які слова (whoosh, click, paper, nature, apple, music …). Запит — англійською.
 """
@@ -176,12 +178,63 @@ def gen(prompt, cat, dur, n, tags):
     _save(INDEX, index)
 
 
+AUDIO = {".mp3", ".wav", ".flac", ".ogg", ".m4a", ".aif", ".aiff"}
+
+
+def add_dir(src_dir, src, cat_prefix, tags, skip):
+    """Додати готовий пак звуків: файли копіюються в `<src>/<категорія>/…`, категорія — верхня папка пака (якщо в ній
+    лише підпапки — наступна: Games/GTA → games-gta), теги — слова шляху. Повторний запуск додає тільки нове."""
+    from concurrent.futures import ThreadPoolExecutor
+    import shutil
+    root, index = Path(src_dir).expanduser(), _load(INDEX, [])
+    have = {e["id"] for e in index}
+    todo = []
+    for f in sorted(root.rglob("*")):
+        rel = f.relative_to(root)
+        if f.suffix.lower() not in AUDIO or any(x and x.lower() in str(rel).lower() for x in skip):
+            continue
+        sid = f"{src}:{rel}"
+        if sid in have:
+            continue
+        parts = rel.parts[:-1] or ("misc",)
+        top = root / parts[0]
+        depth = 1 if any(c.is_file() and c.suffix.lower() in AUDIO for c in top.iterdir()) or len(parts) < 2 else 2
+        cat = cat_prefix + _slug("-".join(parts[:depth]), 30)
+        sub = "__".join(_slug(x, 30) for x in parts[depth:])
+        dst = LIB / src / cat / sub / (_slug(f.stem, 60) + f.suffix.lower())
+        todo.append((f, sid, cat, dst, rel))
+
+    def one(t):
+        f, sid, cat, dst, rel = t
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f, dst)
+        words = [w for x in rel.parts[:-1] for w in _slug(x).split("-") if w]
+        return dict(id=sid, title=f.stem, author=src, license=src, file=str(dst.relative_to(LIB)), category=cat,
+                    tags=sorted(set(words + [t for t in tags.split(",") if t])), **measure(dst))
+
+    with ThreadPoolExecutor(8) as ex:
+        for k, e in enumerate(ex.map(one, todo), 1):
+            index.append(e)
+            if k % 200 == 0:
+                _save(INDEX, index)
+                print(f"… {k}/{len(todo)}", flush=True)
+    _save(INDEX, index)
+    print(f"+ {len(todo)} файлів з {root.name} → {LIB / src}")
+
+
+RANK = {"starter": 1, "freesound": 1, "elevenlabs": 2}  # спершу куплені паки, потім Freesound, генерація остання
+
+
 def lib(q, cat):
     words = (q or "").lower().split()
+    rows = []
     for e in _load(INDEX, []):
-        hay = " ".join([e["title"], e["category"], " ".join(e.get("tags", [])), e.get("query", "")]).lower()
-        if (not cat or e["category"] == cat) and all(w in hay for w in words):
-            print(f"{e['file']:<70} {e['duration']:>6} с  пик {e['peak_db']}  {e['id']} — {e['author']}")
+        hay = " ".join([e["title"], e["category"], e["file"], " ".join(e.get("tags", [])), e.get("query", "")]).lower()
+        if (not cat or e["category"] == cat or e["category"].startswith(cat + "-")) and all(w in hay for w in words):
+            rows.append(e)
+    rows.sort(key=lambda e: RANK.get(e["id"].split(":")[0], 0))
+    for e in rows:
+        print(f"{e['file']:<70} {e['duration']:>6} с  пік {e['peak_db']}  {e['id']} — {e['author']}")
 
 
 def main():
@@ -212,6 +265,12 @@ def main():
     ge.add_argument("--dur", type=float, default=1.5)
     ge.add_argument("-n", type=int, default=1)
     ge.add_argument("--tags", default="")
+    ad = sp.add_parser("add-dir")
+    ad.add_argument("dir")
+    ad.add_argument("--src", required=True)
+    ad.add_argument("--cat-prefix", default="")
+    ad.add_argument("--tags", default="")
+    ad.add_argument("--skip", action="append", default=[])
     args = ap.parse_args()
 
     if args.cmd in ("search", "fetch"):
@@ -230,6 +289,8 @@ def main():
         get(args.ids, args.cat, args.tags)
     elif args.cmd == "lib":
         lib(args.query, args.cat)
+    elif args.cmd == "add-dir":
+        add_dir(args.dir, args.src, args.cat_prefix, args.tags, args.skip)
     elif args.cmd == "gen":
         gen(args.prompt, args.cat, args.dur, args.n, args.tags)
     elif args.cmd == "audit":
