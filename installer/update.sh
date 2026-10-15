@@ -5,7 +5,7 @@ S="$HOME/.studio"
 ZIP="${STUDIO_ZIP:-https://codeload.github.com/BevirAway/reels-studio/zip/refs/heads/main}"
 echo ""; echo "  ✦ Оновлюю Студію…"
 tmp=$(mktemp -d)
-if ! curl -fsSL "$ZIP" -o "$tmp/s.zip" || ! unzip -q "$tmp/s.zip" -d "$tmp"; then
+if ! curl -fsSL "$ZIP" -o "$tmp/s.zip" || ! ditto -x -k "$tmp/s.zip" "$tmp"; then
   echo "  ✗ Не вдалося завантажити оновлення — перевірте інтернет."; exit 1
 fi
 rm -rf "$S/repo.old"; mv "$S/repo" "$S/repo.old" && mv "$tmp"/reels-studio-*/ "$S/repo" && rm -rf "$tmp" "$S/repo.old"

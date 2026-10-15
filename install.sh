@@ -14,7 +14,7 @@ if [ -n "${STUDIO_SRC:-}" ]; then
 else
   tmp=$(mktemp -d)
   curl -fsSL "$ZIP" -o "$tmp/studio.zip"
-  unzip -q "$tmp/studio.zip" -d "$tmp"
+  ditto -x -k "$tmp/studio.zip" "$tmp"
   rm -rf "$S/repo.new"; mv "$tmp"/reels-studio-*/ "$S/repo.new"; rm -rf "$tmp"
 fi
 rm -rf "$S/repo"; mv "$S/repo.new" "$S/repo"

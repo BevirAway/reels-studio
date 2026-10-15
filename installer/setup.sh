@@ -378,7 +378,7 @@ if [ -z "$PACK" ]; then PACK=$(ls -t "$HOME/Downloads"/studio-pack*.zip 2>/dev/n
 if [ -n "$PACK" ] && [ -e "$PACK" ]; then
   rm -rf "$S/pack"; mkdir -p "$S/pack"
   if [ -d "$PACK" ]; then cp -R "$PACK/." "$S/pack/"; else
-    t=$(mktemp -d); unzip -q "$PACK" -d "$t"
+    t=$(mktemp -d); ditto -x -k "$PACK" "$t"
     root=$(dirname "$(find "$t" -maxdepth 3 \( -name "профіль.md" -o -name "стиль" \) | head -1)")
     cp -R "$root/." "$S/pack/"; rm -rf "$t"
   fi
